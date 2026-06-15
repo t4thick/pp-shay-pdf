@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PDF Merge</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="hero">
+        <p class="eyebrow">Private · In memory only</p>
+        <h1>Merge PDFs</h1>
+        <p class="lead">
+          Upload your files, merge them in order, and download. Nothing is saved to
+          disk — your PDFs are processed in memory and discarded right after.
+        </p>
+      </header>
+
+      <section class="panel">
+        <form class="merge-form" action="/merge" method="post" enctype="multipart/form-data">
+          <label class="upload-box">
+            <span class="upload-icon">+</span>
+            <span class="upload-title"><strong>Choose PDFs</strong></span>
+            <span class="hint">Select all files at once — they merge in picker order</span>
+            <input
+              class="file-input"
+              type="file"
+              name="files"
+              accept="application/pdf,.pdf"
+              multiple
+              required
+            />
+          </label>
+
+          <div class="controls">
+            <label class="field">
+              <span>Compression</span>
+              <select name="compression">
+                {% for value, label in compression_options %}
+                <option value="{{ value }}" {% if compression == value %}selected{% endif %}>
+                  {{ label }}
+                </option>
+                {% endfor %}
+              </select>
+            </label>
+
+            <label class="field">
+              <span>Download name</span>
+              <input type="text" name="filename" value="{{ filename }}" required />
+            </label>
+          </div>
+
+          <button class="primary" type="submit">Merge &amp; download</button>
+
+          {% if error %}
+          <p class="status error" role="alert">{{ error }}</p>
+          {% endif %}
+        </form>
+      </section>
+
+      <footer class="note">
+        <p>
+          Every page is auto-sized to match the largest page in your upload, so
+          nothing ends up thin or tiny after merging.
+        </p>
+        <p class="limit">Max total upload: 4 MB.</p>
+      </footer>
+    </main>
+  </body>
+</html>

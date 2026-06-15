@@ -12,12 +12,13 @@ A small, private web app to **merge** and **compress** PDFs.
 
 ```
 merge/
-├── api/index.py     FastAPI app + serves the frontend (Vercel entrypoint)
+├── api/index.py     FastAPI app + Jinja2 templates (Vercel entrypoint)
 ├── pdf/
 │   ├── merge.py     merge + full-screen page normalization
 │   ├── compress.py  image/structure compression
 │   └── service.py   merge → compress pipeline
-├── web/             frontend (HTML/CSS/JS)
+├── templates/       server-rendered HTML (no JavaScript)
+├── static/          CSS
 ├── requirements.txt
 └── vercel.json
 ```

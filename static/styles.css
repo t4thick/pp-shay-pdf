@@ -53,7 +53,6 @@ h1 {
 .lead,
 .note p,
 .hint,
-.status,
 .limit {
   color: var(--muted);
 }
@@ -72,7 +71,15 @@ h1 {
   box-shadow: var(--shadow);
 }
 
-.dropzone {
+.merge-form {
+  display: grid;
+  gap: 0;
+}
+
+.upload-box {
+  display: grid;
+  justify-items: center;
+  gap: 0.35rem;
   border: 2px dashed #cbd5e1;
   border-radius: 18px;
   padding: 2rem 1rem;
@@ -81,18 +88,12 @@ h1 {
   transition: border-color 0.2s ease, background 0.2s ease;
 }
 
-.dropzone:focus-visible {
-  outline: 3px solid rgba(15, 118, 110, 0.35);
-  outline-offset: 3px;
-}
-
-.dropzone.active,
-.dropzone:hover {
+.upload-box:hover {
   border-color: var(--accent);
   background: rgba(15, 118, 110, 0.04);
 }
 
-.drop-icon {
+.upload-icon {
   display: inline-grid;
   place-items: center;
   width: 3rem;
@@ -102,67 +103,17 @@ h1 {
   color: var(--accent);
   font-size: 1.8rem;
   line-height: 1;
-  margin-bottom: 0.75rem;
 }
 
-.dropzone p {
-  margin: 0.25rem 0;
+.upload-title {
+  font-size: 1rem;
 }
 
-.file-list {
-  list-style: none;
-  margin: 1.25rem 0 0;
-  padding: 0;
-  display: grid;
-  gap: 0.75rem;
-}
-
-.file-item {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  gap: 0.75rem;
-  align-items: center;
-  padding: 0.85rem 1rem;
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  background: #fafaf9;
-}
-
-.file-index {
-  width: 2rem;
-  height: 2rem;
-  border-radius: 999px;
-  display: grid;
-  place-items: center;
-  background: var(--ink);
-  color: white;
-  font-size: 0.85rem;
-  font-weight: 700;
-}
-
-.file-name {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.file-actions {
-  display: flex;
-  gap: 0.35rem;
-}
-
-.icon-btn {
-  border: 1px solid var(--line);
-  background: white;
-  border-radius: 10px;
-  width: 2.2rem;
-  height: 2.2rem;
-  cursor: pointer;
-}
-
-.icon-btn:disabled {
-  opacity: 0.35;
-  cursor: not-allowed;
+.file-input {
+  width: 100%;
+  max-width: 320px;
+  margin-top: 0.5rem;
+  font: inherit;
 }
 
 .controls {
@@ -208,27 +159,17 @@ h1 {
   cursor: pointer;
 }
 
-.primary:hover:not(:disabled) {
+.primary:hover {
   background: var(--accent-dark);
 }
 
-.primary:disabled {
-  opacity: 0.45;
-  cursor: not-allowed;
-}
-
 .status {
-  min-height: 1.4rem;
   margin: 0.85rem 0 0;
   font-size: 0.92rem;
 }
 
 .status.error {
   color: var(--danger);
-}
-
-.status.success {
-  color: var(--accent-dark);
 }
 
 .note {
