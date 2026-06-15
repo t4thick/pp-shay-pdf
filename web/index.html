@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PDF Merge</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="hero">
+        <p class="eyebrow">Private · In memory only</p>
+        <h1>Merge PDFs</h1>
+        <p class="lead">
+          Upload your files, merge them in order, and download. Nothing is saved to
+          disk — your PDFs are processed in memory and discarded right after.
+        </p>
+      </header>
+
+      <section class="panel">
+        <div id="dropzone" class="dropzone" tabindex="0" role="button" aria-label="Upload PDF files">
+          <div class="dropzone-inner">
+            <span class="drop-icon">+</span>
+            <p><strong>Choose PDFs</strong> or drag them here</p>
+            <p class="hint">Merge order follows the list below</p>
+          </div>
+          <input id="file-input" type="file" accept="application/pdf,.pdf" multiple hidden />
+        </div>
+
+        <ul id="file-list" class="file-list" hidden></ul>
+
+        <div class="controls">
+          <label class="field">
+            <span>Compression</span>
+            <select id="compression">
+              <option value="light">Light — best quality</option>
+              <option value="medium" selected>Medium — balanced</option>
+              <option value="strong">Strong — smallest file</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span>Download name</span>
+            <input id="filename" type="text" value="merged.pdf" />
+          </label>
+        </div>
+
+        <button id="merge-btn" class="primary" disabled>Merge &amp; download</button>
+        <p id="status" class="status" aria-live="polite"></p>
+      </section>
+
+      <footer class="note">
+        <p>
+          Every page is auto-sized to match the largest page in your upload, so
+          nothing ends up thin or tiny after merging.
+        </p>
+        <p class="limit">Max total upload: 4 MB.</p>
+      </footer>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
